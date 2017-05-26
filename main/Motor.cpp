@@ -31,17 +31,17 @@ void Motor::runMotor()
 void Motor::turnRight()//右转 左加速
 {
     motor_speed[0] = LOW;
-    motor_speed[1] = 140;
+    motor_speed[1] = 160;
     motor_speed[2] = HIGH;
-    motor_speed[3] = 110;
+    motor_speed[3] = 90;
 }
 
 void Motor::turnLeft() //左转 右加速
 {
     motor_speed[0] = HIGH;
-    motor_speed[1] = 110;
+    motor_speed[1] = 105;
     motor_speed[2] = LOW;
-    motor_speed[3] = 140;
+    motor_speed[3] = 145;
 }
 
 bool Motor::Back() //后退

@@ -3,11 +3,6 @@
 Sensor::Sensor(int mode):
 threshod{400, 400}, black_pin{A4, A0}, feel_pin{A3, A2}
 {
-    for(int i = 0; i < sizeof(black_pin)/sizeof(int); i++)
-    {
-        pinMode(black_pin[i], INPUT);
-    }
-
     switch(mode)
     {
       case USE_ULT: pinMode(trig_pin, OUTPUT); 
@@ -41,7 +36,7 @@ int Sensor::readBlack()
         #endif
 
         //设定阀值
-        if(val <= threshod[i] && val >= 40)
+        if(val <= threshod[i])
         {
           val = 1;
         }
