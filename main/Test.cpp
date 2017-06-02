@@ -6,7 +6,7 @@
 
 Test::Test(int mode):Sensor(mode)
 {
-    Serial.begin(9600);
+
 }
 
 /*整体显示*/

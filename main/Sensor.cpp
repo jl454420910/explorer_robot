@@ -5,7 +5,7 @@
 #include "Sensor.h"
       
 Sensor::Sensor(int mode):
-threshod{480, 480}, black_pin{A0, A4}, feel_pin{A2, A3} , led_pin{4, 8}, trig_pin(2), echo_pin(A3)
+threshod{500, 500}, black_pin{A0, A4}, feel_pin{A2, A3} , led_pin{4, 8}, trig_pin(2), echo_pin(A3)
 {
 
     for(int i = 0; i < sizeof(led_pin)/sizeof(int); i++)
@@ -58,8 +58,9 @@ boolean Sensor::getFeel()
        //检测到为低电平为触碰到
        bitWrite(feel_data, i, !digitalRead(feel_pin[i]));      
     }
-
-    return feel_data == 3 ? false : true;
+    
+    //返回3代表两个触须都没接触到障碍物
+    return (feel_data == 0 ? false : true);
 }
 
 /*利用超声波传感器获得距离障碍物距离*/
@@ -77,7 +78,7 @@ float Sensor::getDistance()
     cm = pulseIn(echo_pin, HIGH) / 58.0; //算成厘米 
     cm = (int(cm * 100.0)) / 100.0; //保留两位小数
 
-//  负值为无障碍
+    //负值为无障碍
     if(cm < 0)
         cm = 1000;
         

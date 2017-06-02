@@ -1,10 +1,14 @@
+/*
+ * 调试用类, 用于显示各传感器的数值
+*/
+
+
 #ifndef Test_h 
 #define Test_h
 
-#include "Motor.h"
 #include "Sensor.h"
 
-class Test : public Motor, Sensor
+class Test : public Sensor
 {
     public:
       Test(int mode);

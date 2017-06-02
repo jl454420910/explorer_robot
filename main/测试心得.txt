@@ -1,0 +1,36 @@
+语法要点:
+    1. Arduino上int总为16位, long为32位, double和float等价都为32位, 存在和unsigned char类型类似
+       的byte类型(相当于一个字节的数), 可以使用c++内部的bool类型或用Arduino内部的boolean类型,
+       两者等价.
+    
+    2. 在自建类库的时候C++头文件需要注意版本兼容, 需要加如下条件编译语句:
+    
+        #if defined(ARDUINO) && ARDUINO >= 100
+            #include "Arduino.h"
+        #else
+            #include "WProgram.h"
+        #endif
+        
+        即在Arduino1.0版以前官方库头文件都为WProgram.h, 之后改为了Arduino.h
+    
+    3. Arduino隐藏了c++运行的一般结构即main()函数, 实际程序结构为:
+    
+       #include ...
+    
+       int main(void)
+       {
+            setup();
+            
+            for(;;)
+            {
+                loop();
+            }
+            
+            return 0;
+       }
+    
+    4. 时刻注意运算优先级, 三目运算符 ? : 甚至比 , 运算符优先级更低, 需要使用 () 来明确运算顺序
+    
+    5. 在进行算数比较时(< > ==), 要保证两数的数据类型统一, 否则会出现难以理解的错误.
+       对浮点数不能进行严格相等的运算(==), 浮点数存在精度误差只能使用近似相等, 即与目标值的差值小于
+       某一范围就视为相等.
