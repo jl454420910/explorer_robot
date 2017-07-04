@@ -1,11 +1,7 @@
-/*
- * 传感器控制库
-*/
-
 #include "Sensor.h"
       
 Sensor::Sensor(int mode):
-threshod{500, 500}, black_pin{A0, A4}, feel_pin{A2, A3} , led_pin{4, 8}, trig_pin(2), echo_pin(A3)
+threshod{500, 500}, black_pin{A0, A4, A3}, feel_pin{A2} , led_pin{4, 8}, trig_pin(2), echo_pin(A3)
 {
 
     for(int i = 0; i < sizeof(led_pin)/sizeof(int); i++)
@@ -27,6 +23,8 @@ threshod{500, 500}, black_pin{A0, A4}, feel_pin{A2, A3} , led_pin{4, 8}, trig_pi
     }
    
 }
+
+
 
 /*读取黑线传感器数据*/
 int Sensor::readBlack()

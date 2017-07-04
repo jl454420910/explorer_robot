@@ -30,15 +30,15 @@ class Sensor
       
     protected:
         /*黑标*/
-        const int black_pin[2]; //依次为右 左传感器 
-        const int threshod[2]; //黑标传感器阀值，分别对应右 左传感器
+        const int black_pin[3]; //依次为左 右 中传感器 
+        const int threshod[3]; //黑标传感器阀值，分别对应左 右 中传感器
         
         /*超声波*/
         const int trig_pin;  //超声波传感器引脚 输出
         const int echo_pin;  //输入
     
         /*触须*/
-        const int feel_pin[2]; //触须传感器
+        const int feel_pin[1]; //触须传感器
     
         /*LED*/
         const int led_pin[2]; //led亮灯控制

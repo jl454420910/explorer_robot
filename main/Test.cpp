@@ -1,7 +1,3 @@
-/*
- * 调试用类, 用于显示各传感器的数值
-*/
-
 #include "Test.h"
 
 Test::Test(int mode):Sensor(mode)

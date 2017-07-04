@@ -2,26 +2,21 @@
  * 运行主程序
 */
 
-
 //测试标志
 #define nTEST
 
 //远程控制标志
 #define nREMOTE
 
-#ifdef TEST
-#include "Test.h"
-#endif
 
-#ifdef REMOTE
-    #include "Remote.h"
-#endif
-
-#include "Move.h"
+#include "Motor.h"
 #include "Sensor.h"
 
+#include "Test.h"
+#include "Remote.h"
+
 //初始化电机对象
-Move myMove;
+Motor myMotor;
 
 //初始化传感器对象
 Sensor mySensor(USE_FEEL);
@@ -53,6 +48,5 @@ void loop()
         myRemote.control();
     #endif   
 
-    myMove.runMotor(mySensor.readBlack(), mySensor.getFeel());  
-
+    myMotor.run(mySensor.readBlack(), mySensor.getFeel());  
 }
